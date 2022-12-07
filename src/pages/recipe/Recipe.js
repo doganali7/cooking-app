@@ -5,7 +5,7 @@ import "./Recipe.css";
 
 export default function Recipe() {
   const { id } = useParams();
-  const url = "http://localhost:3000/recipes/" + id;
+  const url = "http://localhost:3002/recipes/" + id;
   const { error, isPending, data: recipe } = useFetch(url);
 
   return (

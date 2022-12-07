@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./Create.css";
 
 export default function Create() {
@@ -8,6 +8,7 @@ export default function Create() {
   const [cookingTime, setCookingTime] = useState("");
   const [newIngredient, setNewIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
+  const ingredientInput = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +22,8 @@ export default function Create() {
     if (ing && !ingredients.includes(ing)) {
       setIngredients((prevIngredients) => [...prevIngredients, ing]);
     }
+    setNewIngredient("");
+    ingredientInput.current.focus();
   };
 
   return (
@@ -43,6 +46,7 @@ export default function Create() {
               type="text"
               onChange={(e) => setNewIngredient(e.target.value)}
               value={newIngredient}
+              ref={ingredientInput}
             />
             <button onClick={handleAdd} className="btn">
               add
