@@ -12,7 +12,7 @@ export default function Create() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title, method, cookingTime);
+    console.log(title, method, cookingTime, ingredients);
   };
 
   const handleAdd = (e) => {
@@ -53,6 +53,12 @@ export default function Create() {
             </button>
           </div>
         </label>
+        <p>
+          Current Ingredients:{" "}
+          {ingredients.map((i) => (
+            <em key={i}>{i}, </em>
+          ))}
+        </p>
         <span>Recipe Method:</span>
         <textarea
           type="text"
